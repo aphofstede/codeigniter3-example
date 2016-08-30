@@ -68,7 +68,11 @@ switch (ENVIRONMENT)
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
-	break;
+        if( ! ini_get('date.timezone') )
+        {
+            date_default_timezone_set('GMT');
+        }
+        break;
 
 	case 'testing':
 	case 'production':
